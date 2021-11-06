@@ -44,16 +44,8 @@ function handleAddEmployee(){
     let newId = $( '#idInput' ).val();
     let newTitle = $( '#titleInput' ).val();
     let newAnnualSalary = $( '#annualSalaryInput' ).val();
-
-    let newEmployee = {
-        firstName: newFirstName,
-        lastName: newLastName,
-        id: newId,
-        jobTitle: newTitle,
-        annualSalary: newAnnualSalary,
-    }
     
-    employeeList.push(newEmployee)
+    addNewEmployee (newFirstName, newLastName, newId, newTitle, newAnnualSalary)
     
         $( '#firstNameInput' ).val('');
         $( '#lastNameInput' ).val('');
@@ -63,4 +55,16 @@ function handleAddEmployee(){
     
     createEmployeeList(employeeList);
     renderMonthlyCost(employeeList);
+}
+
+function addNewEmployee (newFirstName, newLastName, newId, newTitle, newAnnualSalary){
+    let newEmployee = {
+        firstName: newFirstName,
+        lastName: newLastName,
+        id: newId,
+        jobTitle: newTitle,
+        annualSalary: newAnnualSalary,
+    }
+    
+    employeeList.push(newEmployee)
 }
