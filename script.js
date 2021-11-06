@@ -1,11 +1,29 @@
 $( document ).ready( onReady )
 
-let employeeList = [
-    {firstName: 'Claire', lastName: 'Placeholder', id: 12345, jobTitle: 'title', annualSalary: 100000},
-];
+// let employeeList = [];
+
+// function createNewEmployee(firstName, lastName, id, title, annualSalary){
+//     let newEmployee = {
+//       firstName: firstNameInput,
+//       lastName: lastNameInput,
+//       id: idInput,
+//       jobTitle: titleInput,
+//       annualSalary: annualSalaryInput,
+//     }
+//     employeeList.push(newEmployee);
+//     return true;
+//   }
+let employeeList = [{
+    firstName: 'Claire', 
+    lastName: 'Placeholder', 
+    id: 12345, 
+    jobTitle: 'title', 
+    annualSalary: 100000
+}];
 
 function onReady(){
-    $('#submitButton').on('click', createEmployeeList);
+    createEmployeeList(employeeList)
+    $('#addEmployee').on('click', handleAddEmployee )
 }
 
 function createEmployeeList(listName) {
@@ -22,4 +40,29 @@ function createEmployeeList(listName) {
         
     $('#employeeTable').append(newTableRow);
     }
+}
+
+function handleAddEmployee(){
+    let newFirstName = $( '#firstNameInput' ).val();
+    let newLastName = $( '#lastNameInput' ).val();
+    let newId = $( '#idInput' ).val();
+    let newTitle = $( '#titleInput' ).val();
+    let newAnnualSalary = $( '#annualSalaryInput' ).val();
+
+    let newEmployee = {
+        firstName: newFirstName,
+        lastName: newLastName,
+        id: newId,
+        jobTitle: newTitle,
+        annualSalary: newAnnualSalary,
+    }
+    
+    employeeList.push(newEmployee)
+    
+        $( '#firstNameInput' ).val('');
+        $( '#lastNameInput' ).val('');
+        $( '#idInput' ).val('');
+        $( '#titleInput' ).val('');
+        $( '#annualSalaryInput' ).val('');
+    
 }
