@@ -1,11 +1,42 @@
 * {
-    font-family: 'roboto', sans-serif;
+    font-family: sans-serif;
+    font-weight: 380;
+}
+
+header{
+    background-color: #C2d2c2;
+    text-align: center;
+    padding: .02em;
+    margin: 1;
 }
 
 body {
-    background-color: lavenderblush;
+    background-color: snow;
 }
 
 div {
     display: inline;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 2px solid black;
+    padding: 0.5rem;
+}
+
+th{
+    background:#C2d2c2;
+}
+
+
+tr:nth-child(even) {
+    background: #C2d2c2;
+}
+
+tr:nth-child(odd) {
+    background: #E3ece3;
 }
