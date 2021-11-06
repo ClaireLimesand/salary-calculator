@@ -1,32 +1,15 @@
 $( document ).ready( onReady )
 
-// let employeeList = [];
-
-// function createNewEmployee(firstName, lastName, id, title, annualSalary){
-//     let newEmployee = {
-//       firstName: firstNameInput,
-//       lastName: lastNameInput,
-//       id: idInput,
-//       jobTitle: titleInput,
-//       annualSalary: annualSalaryInput,
-//     }
-//     employeeList.push(newEmployee);
-//     return true;
-//   }
-let employeeList = [{
-    firstName: 'Claire', 
-    lastName: 'Placeholder', 
-    id: 12345, 
-    jobTitle: 'title', 
-    annualSalary: 100000
-}];
+let employeeList = [];
 
 function onReady(){
-    createEmployeeList(employeeList)
-    $('#addEmployee').on('click', handleAddEmployee )
+    createEmployeeList(employeeList);
+    $('#addEmployee').on('click', handleAddEmployee );
+    renderMonthlyCost(employeeList); 
 }
 
 function createEmployeeList(listName) {
+    $('#employeeTableBody').empty();
     for (let employee of employeeList) {
         let newTableRow = `
             <tr>
@@ -38,8 +21,21 @@ function createEmployeeList(listName) {
             </tr>
         `;
         
-    $('#employeeTable').append(newTableRow);
+    $('#employeeTableBody').append(newTableRow);
     }
+}
+
+function calculateMonthlyCost(employeesToSum) {
+    let sum = 0;
+    for (let employee of employeesToSum){ 
+        sum =  employee.annualSalary / 12
+    }
+    return sum;
+}
+
+function renderMonthlyCost(employeesToSum) {
+    let monthlyCost = calculateMonthlyCost(employeesToSum)
+    $('#monthlyCost').text(monthlyCost)
 }
 
 function handleAddEmployee(){
@@ -65,4 +61,6 @@ function handleAddEmployee(){
         $( '#titleInput' ).val('');
         $( '#annualSalaryInput' ).val('');
     
+    createEmployeeList(employeeList);
+    renderMonthlyCost(employeeList);
 }
