@@ -84,7 +84,6 @@ function addNewEmployee (newFirstName, newLastName, newId, newTitle, newAnnualSa
 }
 
 function handleDeleteButton(event) {
-    console.log(event.target.id.substring(6))
     let employeeIdRender= (event.target.id.substring(6))
     for (let employees of employeeList){
         if (employeeIdRender == employees.employeeIndex) {
@@ -93,5 +92,5 @@ function handleDeleteButton(event) {
         }
     }
 }
-  // $(this).closest('tr').remove();
+  // my initial method before realizing it caused a bug: $(this).closest('tr').remove();
 
