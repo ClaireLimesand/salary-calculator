@@ -2,29 +2,32 @@ $( document ).ready( onReady )
 
 let employeeList = [];
 let monthlyCost = 0;
+let globalIndex = 0;
 
 function onReady(){
     createEmployeeList(employeeList);
     $('#addEmployee').on('click', handleAddEmployee );
-    // renderMonthlyCost(employeeList); 
+    renderMonthlyCost(employeeList); 
 }
 
 function createEmployeeList(listName) {
     $('#employeeTableBody').empty();
     for (let employee of employeeList) {
         let newTableRow = `
-            <tr>
+            <tr id="row${employee.employeeIndex}">
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
                 <td>${employee.id}</td>
                 <td>${employee.jobTitle}</td>
                 <td>${employee.annualSalary}</td>
-                <td>${"<button class='deleteButton'>Delete</button>"}</td>
+                <td>
+                    <button id="button${employee.employeeIndex}">Delete</button>
+                </td>
             </tr>
         `;
         
     $('#employeeTableBody').append(newTableRow);
-    $('.deleteButton').on('click', handleDeleteButton);
+    $(`#button${employee.employeeIndex}`).on('click', handleDeleteButton);
     }
 }
 
@@ -45,7 +48,7 @@ function renderMonthlyCost(employeesToSum) {
     } else   {
     $('#turnRed').removeClass('turnRed');
     }
-};
+}
 
 function handleAddEmployee(){
     let newFirstName = $( '#firstNameInput' ).val();
@@ -67,27 +70,28 @@ function handleAddEmployee(){
 }
 
 function addNewEmployee (newFirstName, newLastName, newId, newTitle, newAnnualSalary){
+    let employeeIndex = globalIndex;
+    globalIndex ++
     let newEmployee = {
         firstName: newFirstName,
         lastName: newLastName,
         id: newId,
         jobTitle: newTitle,
         annualSalary: newAnnualSalary,
+        employeeIndex: employeeIndex,
     }
     employeeList.push(newEmployee)
 }
 
-function handleDeleteButton() {
-    $(this).closest('tr').remove();
-    renderMonthlyCost();
-
+function handleDeleteButton(event) {
+    console.log(event.target.id.substring(6))
+    let employeeIdRender= (event.target.id.substring(6))
+    for (let employees of employeeList){
+        if (employeeIdRender == employees.employeeIndex) {
+            employeeList.splice(employeeList.indexOf(employees), 1);
+            $(`#row${employeeIdRender}`).remove();
+        }
+    }
 }
+  // $(this).closest('tr').remove();
 
-// let index = findIndex
-// $(rowID).remove();
-  //remove employee Object by fed idNumber  
-//   for (let i in array){
-//     if (array[i].idNumber === idNumber ){
-//       array.splice(i, 1);
-//     };
-//   };

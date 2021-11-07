@@ -25,18 +25,7 @@ table {
 td, th {
     border: 2px solid black;
     padding: 0.5rem;
-}
-
-th{
     background:#C2d2c2;
-}
-
-tr:nth-child(even) {
-    background: #C2d2c2;
-}
-
-tr:nth-child(odd) {
-    background: #E3ece3;
 }
 
 .turnRed {
