@@ -1,13 +1,12 @@
 * {
     font-family: sans-serif;
-    font-weight: 380;
+    text-align: left;
 }
 
-header{
-    background-color: #C2d2c2;
+h1 {
     text-align: center;
-    padding: .02em;
-    margin: 1;
+    padding: .2em;
+    margin: 0%;
 }
 
 body {
@@ -32,11 +31,14 @@ th{
     background:#C2d2c2;
 }
 
-
 tr:nth-child(even) {
     background: #C2d2c2;
 }
 
 tr:nth-child(odd) {
     background: #E3ece3;
+}
+
+.turnRed {
+    color:#d21404
 }
